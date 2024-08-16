@@ -5,6 +5,14 @@ POST http://localhost:3001/api/persons/ HTTP/1.1
 Content-Type: application/json
 
 {
-   "name": "YBY",
-   "number": "110"
+   "name": "BY",
+   "number": "11000"
+}
+
+###
+POST http://localhost:3001/api/persons/ HTTP/1.1
+Content-Type: application/json
+
+{
+   "name": "QQ"
 }
