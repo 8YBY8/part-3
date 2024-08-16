@@ -1,7 +1,12 @@
 const express = require("express");
 const app = express();
 
-// Express json-parser
+var morgan = require('morgan')
+app.use(morgan('tiny'))
+
+// Express json-parser: takes the raw data from the requests that are stored 
+// in the request object, parses it into a JavaScript object and assigns it to 
+// the request object as a new property `body`.
 app.use(express.json())
 
 let persons = [
