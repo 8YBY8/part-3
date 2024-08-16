@@ -1,64 +1,69 @@
-const express = require('express')
-const app = express()
+const express = require("express");
+const app = express();
 
 let persons = [
-    { 
-      "id": "1",
-      "name": "Arto Hellas", 
-      "number": "040-123456"
-    },
-    { 
-      "id": "2",
-      "name": "Ada Lovelace", 
-      "number": "39-44-5323523"
-    },
-    { 
-      "id": "3",
-      "name": "Dan Abramov", 
-      "number": "12-43-234345"
-    },
-    { 
-      "id": "4",
-      "name": "Mary Poppendieck", 
-      "number": "39-23-6423122"
-    }
-]
+  {
+    id: "1",
+    name: "Arto Hellas",
+    number: "040-123456",
+  },
+  {
+    id: "2",
+    name: "Ada Lovelace",
+    number: "39-44-5323523",
+  },
+  {
+    id: "3",
+    name: "Dan Abramov",
+    number: "12-43-234345",
+  },
+  {
+    id: "4",
+    name: "Mary Poppendieck",
+    number: "39-23-6423122",
+  },
+];
 
-app.get('/', (request, response) => {
-    response.send('<h1>Hello World!</h1>')
-})
+app.get("/", (request, response) => {
+    response.send("<h1>Hello World!</h1>");
+});
 
-app.get('/api/persons', (request, response) => {
-    response.json(persons)
-})
+app.get("/api/persons", (request, response) => {
+    response.json(persons);
+});
 
-app.get('/info', (request, response) => {
-    const numOfPersons = persons.length
+app.get("/info", (request, response) => {
+    const numOfPersons = persons.length;
     const now = new Date();
 
-    response.send(`Phonebook has info for ${numOfPersons} people <br/> ${now}`)
+    response.send(`Phonebook has info for ${numOfPersons} people <br/> ${now}`);
+});
+
+app.get("/api/persons/:id", (request, response) => {
+    const id = request.params.id;  
+    const person = persons.find((person) => person.id === id);
+    if (person) {
+        console.log("find");
+        response.json(person);
+    } 
+    else {
+        console.log("x");
+        response.status(404).end();
+    }
+});
+
+app.delete('/api/persons/:id', (request, response) => {
+    const id = request.params.id
+    persons = persons.filter(person => person.id !== id)    
+
+    response.status(204).end()
 })
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const PORT = 3001
+const PORT = 3001;
 app.listen(PORT, () => {
-    console.log(`Sever running on port ${PORT}`);
-})
+  console.log(`Sever running on port ${PORT}`);
+});
