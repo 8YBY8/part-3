@@ -1,4 +1,4 @@
-DELETE http://localhost:3001/api/persons/6615
+DELETE http://localhost:3001/api/persons/2881
 
 ###
 POST http://localhost:3001/api/persons/ HTTP/1.1
@@ -7,6 +7,15 @@ Content-Type: application/json
 {
    "name": "BY",
    "number": "11000"
+}
+
+###
+POST http://localhost:3001/api/persons/ HTTP/1.1
+Content-Type: application/json
+
+{
+   "name": "Liisa Marttinen",
+   "number": "040-243563"
 }
 
 ###

@@ -2,12 +2,14 @@ const express = require("express");
 const app = express();
 
 var morgan = require('morgan')
-app.use(morgan('tiny'))
+// app.use(morgan('tiny'))  for 3.7
+morgan.token('body', function (req, res) { return JSON.stringify(req.body)})
 
 // Express json-parser: takes the raw data from the requests that are stored 
 // in the request object, parses it into a JavaScript object and assigns it to 
 // the request object as a new property `body`.
 app.use(express.json())
+app.use(morgan(':method :url :status :req[content-length] - :response-time ms :body'));
 
 let persons = [
   {
