@@ -1,7 +1,11 @@
+### 
+GET https://part-3-w5d7.onrender.com/api/persons
+
+
 DELETE http://localhost:3001/api/persons/2881
 
 ###
-POST http://localhost:3001/api/persons/ HTTP/1.1
+POST https://part-3-w5d7.onrender.com/api/persons/ HTTP/1.1
 Content-Type: application/json
 
 {
@@ -19,7 +23,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3001/api/persons/ HTTP/1.1
+POST https://part-3-w5d7.onrender.com/api/persons/ HTTP/1.1
 Content-Type: application/json
 
 {
