@@ -13,7 +13,7 @@ const password = process.argv[2]
 // const url =
 //   `mongodb+srv://fullstack:${password}@cluster0.o1opl.mongodb.net/?retryWrites=true&w=majority`
 const url = `mongodb+srv://yby:${password}@cluster0.9px7a.mongodb.net/phonebook?retryWrites=true&w=majority&appName=Cluster0`
-
+// const url = process.env.MONGODB_URI;
 
 mongoose.set('strictQuery',false)
 
@@ -44,8 +44,6 @@ if (process.argv.length === 5) {
 
 // listing all of the existing entries in the phonebook
 if (process.argv.length === 3) {
-  
-
   Person
     .find({})
     .then(persons=> {
@@ -56,3 +54,11 @@ if (process.argv.length === 3) {
       mongoose.connection.close()
     })
 }
+
+// app.get('/api/persons', (request, response) => {
+//   Person.find({}).then(persons => {
+//     console.log("phonebook");
+    
+//     response.json(persons)
+//   })
+// })
