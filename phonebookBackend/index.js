@@ -28,6 +28,52 @@ app.get('/api/persons', (request, response) => {
     .catch(console.error())
 })
 
+app.post('/api/persons', (request, response) => {
+  const body = request.body
+
+  if(!body.name || !body.number) {
+    return response.status(400).json({
+      error:'The name or number is missing'
+    })
+  }
+
+  const person = new Person({
+    name: body.name,
+    number: body.number
+  })
+
+  // adding entries to the phonebook
+  person.save().then(savedPerson => {
+    console.log(`added ${person.name} number ${person.number} to phonebook`)
+    response.json(savedPerson)
+  })
+})
+
+
+// app.post('/api/persons', (request, response) => {
+//   const person = request.body
+
+//   if(!person.name || !person.number) {
+//       return response.status(400).json({
+//         error:'The name or number is missing'
+//       })
+//   }
+
+//   const nameExist = persons.find(p => p.name === person.name)
+    
+//   if(nameExist) {
+//     return response.status(400).json({
+//       error:'name must be unique'
+//     })
+//   }
+
+//   person.id = Math.floor(Math.random() * 10000)
+//   persons = persons.concat(person)
+
+//   response.json(person)
+// })
+
+
 // let persons = [
 //   {
 //     id: "1",
